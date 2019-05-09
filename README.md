@@ -1,5 +1,5 @@
 # Chatops
-Chatops is a chatbot which can integrate with google hangouts chat and perform a lot of internal ops related tasks. It currently does not interpret natural langauge. So, the interaction happens through a limited set of *commands/statements*
+Chatops is a chatbot which can integrate with google hangouts chat and helps automate a lot of ops. It currently does not interpret natural langauge. So, the interaction happens through a limited set of *commands/statements*
 
 ## What it can do
 It is capable of executing commands/scripts based on a user's message. You can use `help` to get all the available commands and how to use them.
