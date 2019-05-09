@@ -1,0 +1,12 @@
+dmResponse.json
+groupResponse.json
+.vscode
+Chatops
+test.sh
+**/env
+**/*.pyc
+**/*.log
+scripts
+commands.json
+chatops-scripts
+oauth2.json
