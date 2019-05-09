@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"regexp"
 
+	"github.com/arjunmahishi/Chatops/config"
 	"github.com/arjunmahishi/Chatops/payload"
 )
 
-// TODO: Make this configurable
-var accessToken = ""
+var accessToken = config.Config.DialogFlowAccessToken
 
 // DialogFlowCommand structure
 type DialogFlowCommand struct {

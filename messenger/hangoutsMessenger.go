@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/arjunmahishi/Chatops/config"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 )
@@ -17,7 +18,7 @@ type HangoutsMessenger struct {
 }
 
 func (hm *HangoutsMessenger) setup() error {
-	credsFile, err := os.Open("./oauth2.json")
+	credsFile, err := os.Open(config.Config.ServiceAccountCredsPath)
 	if err != nil {
 		return err
 	}

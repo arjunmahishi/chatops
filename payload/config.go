@@ -1,4 +1,6 @@
 package payload
 
+import "github.com/arjunmahishi/Chatops/config"
+
 // Token for hangouts api
-const Token = "jHoMBZ-sILKJ1kYm1xmFAGV7y41y2ncTSf7L7Ii2pdY="
+var Token = config.Config.HangoutsToken

@@ -9,8 +9,8 @@ type Aggregator interface {
 // GetAggregator based on the request
 func GetAggregator(output, outputFormat string) Aggregator {
 	switch outputFormat {
-	case "access-log":
-		return &AccessLogAggregator{Text: output}
+	case "simple-table":
+		return &SimpleTableAggregator{Text: output}
 	default:
 		return &PlainTextAggregator{Text: output}
 	}

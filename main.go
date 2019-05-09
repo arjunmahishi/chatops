@@ -1,10 +1,10 @@
 package main
 
 import (
-	"flag"
 	"log"
 
 	"github.com/arjunmahishi/Chatops/commanders"
+	"github.com/arjunmahishi/Chatops/config"
 	"github.com/arjunmahishi/Chatops/messenger"
 	"github.com/arjunmahishi/Chatops/routes"
 	echo "github.com/labstack/echo"
@@ -13,13 +13,10 @@ import (
 
 var sender = messenger.NewMessenger()
 
-var commandsPath = flag.String("commands", "./commands.json", "path to commands.json")
-
 func main() {
-	flag.Parse()
-	err := commanders.SyncCommands(*commandsPath)
+	err := commanders.SyncCommands(config.Config.CommandsPath)
 	if err != nil {
-		sender.Send("spaces/AAAA8fjBKEQ", "<users/all> Chatops has Crashed: \n```"+err.Error()+"```")
+		// sender.Send("spaces/AAAA8fjBKEQ", "<users/all> Chatops has Crashed: \n```"+err.Error()+"```")
 		log.Fatalf(err.Error())
 	}
 

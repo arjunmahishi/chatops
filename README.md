@@ -15,33 +15,83 @@ It is capable of executing commands/scripts based on a user's message. You can u
 
 ## Get started
 
+- Clone repository
+- Install dependencies
+    ```
+    $ go get -d
+    ```
+- Build the binary
+    ```
+    $ go build -o $GOPATH/bin/chatops
+    ```
+- Create a `commands.json` file with the following format
+    ```
+    {
+        "commands": [
+            {
+                "name": "command11",
+                "command": "echo 'hello world from command 1'",
+                "regex": "^test-command-1$"
+            },
+            {
+                "name": "command-2",
+                "command": "echo 'hello world from command 2'",
+                "regex": "^test-command-2$"
+            }
+        ]
+    }
+    ```
+- Each command can be of the following variation
+    ```
+    // Command that runs on a remote machine 
+    {
+        "name": "command-name",
+        "hostname": "<ip address>",
+        "command": "<shell command>",
+        "regex": "^The text that triggers this command$",
+        "example": "<example usage>"
+    }
 
-## Adding a command
+    // Command that runs locally
+    {
+        "name": "command-name",
+        "command": "<shell command>",
+        "regex": "^The text that triggers this command$",
+        "example": "<example usage>"
+    }
+
+    // Command that takes an arguement
+    {
+        "name": "command-name",
+        "command": "command {{arg1}} {{arg2}}",
+        "regex": "^text with (?P<arg1>\\S+) (?P<arg2>\\S+)$",
+        "example": "text with 1 2"
+    }
+    ```
+- Create a `config.json` file with the following details
+    ```
+    {
+        "BotName": "<bot name>",
+        "HangoutsToken": "<hangouts chat varification token>",
+        "DialogFlowAccessToken": "<dialogflow access token>",
+        "CommandsPath": "<path to commands.json>",
+        "ServiceAccountCredsPath": "<path to google service account credentials file>"
+    }
+    ```
+- Run the binary file 
+    ```
+    $ chatops -config config.json
+    ```
+
+    The server should start. The output would look something like this
+    ```
+    $ chatops -config config.json                                                                                
+    2019/05/09 23:03:19 Syncing commands list
+    2019/05/09 23:03:19 Total commands 1
+    ⇨ http server started on [::]:1323
+    ```
+- Now, go to google developer console and configure the hangouts chat API to hit this server. 
 
 
-```
-// Command that runs on a remote machine 
-{
-    "name": "command-name",
-    "hostname": "0.0.0.0",
-    "command": "command arg1 arg2 ...",
-    "regex": "^The text that triggers this command$",
-    "example": "command 1 2 3"
-}
-
-// Command that runs locally
-{
-    "name": "command-name",
-    "command": "command arg1 arg2 ...",
-    "regex": "^the text that triggers this command$",
-    "example": ""
-}
-
-// Command that takes an arguement
-{
-    "name": "command-name",
-    "command": "command {{arg1}} {{arg2}}",
-    "regex": "^text with (?P<arg1>\\S+) (?P<arg2>\\S+)$",
-    "example": "text with 1 2"
-}
-```
+## Contributing
+No guidelines yet. Just make a PR :)
