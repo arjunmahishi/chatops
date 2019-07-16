@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/arjunmahishi/Chatops/aggregators"
+	"github.com/arjunmahishi/Chatops/formatter"
 	"github.com/arjunmahishi/Chatops/messenger"
 	"github.com/arjunmahishi/Chatops/payload"
 )
@@ -36,7 +36,7 @@ func (bc LocalBashCommand) Execute(payloadHandler payload.Handler) (map[string]i
 			return
 		}
 
-		aggregator := aggregators.GetAggregator(string(output), bc.OutputFormat)
+		aggregator := formatter.GetFormatter(string(output), bc.OutputFormat)
 		err = aggregator.Parse()
 		if err != nil {
 			log.Printf(err.Error())

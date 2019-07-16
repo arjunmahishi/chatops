@@ -1,4 +1,4 @@
-package aggregators
+package formatter
 
 import (
 	"fmt"
@@ -7,15 +7,15 @@ import (
 	"github.com/ryanuber/columnize"
 )
 
-// SimpleTableAggregator  structure
-type SimpleTableAggregator struct {
+// SimpleTableFormatter  structure
+type SimpleTableFormatter struct {
 	Service string
 	Text    string
 	Records [][]string
 }
 
 // Parse plain text
-func (sta *SimpleTableAggregator) Parse() error {
+func (sta *SimpleTableFormatter) Parse() error {
 	sta.Text = strings.Trim(sta.Text, " ")
 	sta.Text = strings.Trim(sta.Text, "\n")
 
@@ -36,7 +36,7 @@ func (sta *SimpleTableAggregator) Parse() error {
 	return nil
 }
 
-func (sta *SimpleTableAggregator) String() string {
+func (sta *SimpleTableFormatter) String() string {
 	var rows []string
 
 	for _, row := range sta.Records {
