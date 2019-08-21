@@ -13,7 +13,13 @@ It is capable of executing commands/scripts based on a user's message. You can u
 - The output of the command/script will be sent to the same user (async).
 - These regex strings are stored in a file called `commands.json`. This file will be read only once, when the service starts.
 
-## Get started
+## Installation
+
+#### Download pre-built binary
+
+Download the latest pre-built binary for your platform from the [release page](https://github.com/arjunmahishi/chatops/).
+
+#### Build from source
 
 - Clone repository
 - Install dependencies
@@ -22,8 +28,11 @@ It is capable of executing commands/scripts based on a user's message. You can u
     ```
 - Build the binary
     ```
-    $ go build -o $GOPATH/bin/chatops
+    $ go install
     ```
+
+## Get started
+
 - Create a `commands.json` file with the following format
     ```
     {
@@ -80,12 +89,12 @@ It is capable of executing commands/scripts based on a user's message. You can u
     ```
 - Run the binary file 
     ```
-    $ chatops -config config.json
+    $ chatops -config path_to_config.json
     ```
 
     The server should start. The output would look something like this
     ```
-    $ chatops -config config.json                                                                                
+    $ chatops -config path_to_config.json                                                                                
     2019/05/09 23:03:19 Syncing commands list
     2019/05/09 23:03:19 Total commands 1
     ⇨ http server started on [::]:1323
@@ -94,4 +103,4 @@ It is capable of executing commands/scripts based on a user's message. You can u
 
 
 ## Contributing
-No guidelines yet. Just make a PR :)
+No guidelines yet. Just make a PR.
