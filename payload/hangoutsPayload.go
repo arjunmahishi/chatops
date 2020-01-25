@@ -35,10 +35,6 @@ type space struct {
 
 // Validate the recived payload
 func (hp HangoutsPayload) Validate() bool {
-	if Token != hp.Token {
-		return false
-	}
-
 	if !validateTime(hp.EventTime) {
 		return false
 	}
